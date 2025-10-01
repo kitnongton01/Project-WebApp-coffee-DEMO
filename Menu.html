@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+    </script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>สั่งเครื่องดื่ม</title>
+</head>
+
+<body>
+    <div class="Main">
+        <!-- Seciton Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-hero"><a href="index.html"><img src="img/logo.png" alt="LOGO"></a></div>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="Contact.html">สถานที่/ติดต่อ</a></li>
+                    <li><a href="Menu.html">สั่งเครื่องดื่ม</a></li>
+                    <li>
+                        <a class="btnpopup" href="#" style="display:flex;align-items:center;gap:6px;">
+                            <img src="img/หน้าแรก/USER.png" alt="โปรไฟล์"
+                                style="width:26px;height:26px;object-fit:cover;display:inline-block;vertical-align:middle;">
+                            โปรไฟล์
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-hero">
+                <div class="slider" aria-label="hero slider">
+                    <div class="slides">
+                        <div class="slide is-active"><img src="img/หน้าแรก/page1_PhotoGrid.png" alt="Slide 1"></div>
+                        <div class="slide"><img src="img/หน้าแรก/page2_PhotoGrid.png" alt="Slide 2"></div>
+                        <div class="slide"><img src="img/หน้าแรก/page3_PhotoGrid.png" alt="Slide 3"></div>
+                    </div>
+                    <button class="control prev" aria-label="Previous">‹</button>
+                    <button class="control next" aria-label="Next">›</button>
+                    <div class="dots" role="tablist" aria-label="Slide dots"></div>
+                </div>
+            </div>
+        </div>
+        <!-- End Seciton Header -->
+        <div class="wrapper">
+            <span class="icon-close">
+                <ion-icon name="close-outline"></ion-icon></span>
+
+            <div class="form-box login">
+                <h2>เข้าสู่ระบบ</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">เข้าสู่ระบบ</button>
+                    <div class="login-register">
+                        <p>หากยังไม่สมัครบัญชีโปรด <a href="#" class="register-link">สมัครสมาชิก</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>สมัครสมาชิก</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">agree to the terms & condition</label>
+                    </div>
+                    <button type="submit" class="btn">ส่งข้อมูล</button>
+                    <div class="login-register">
+                        <p>โปรดตรวจสอบความเรียบร้อยก่อนกดส่งข้อมูล <a href="#" class="login-link">เข้าสู่ระบบ</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Section Shop -->
+        <div class="shop">
+            <h3 style="display:inline-block; vertical-align:middle;">เมนูแนะนำ</h3>
+            <button id="cartBtn"
+                style="background:none; border:none; outline:none; cursor:pointer; margin-left:10px; vertical-align:middle;">
+                <img src="img/สั่งเมนู/ตะกร้า.png" alt="Cart" style="width:32px; height:32px; vertical-align:middle;">
+                <span id="cartBadge"
+                    style="position:absolute; top:2px; right:2px; min-width:20px; height:20px; background:#c44; color:#fff; border-radius:50%; font-size:13px; display:none; align-items:center; justify-content:center; padding:0 6px; font-weight:bold; z-index:3;">0</span>
+            </button>
+            <!-- Popup ตะกร้าสินค้า -->
+            <div class="popup-cart" id="popupCart" style="display:none;">
+                <div class="popup-cart-content">
+                    <span class="popup-cart-close" id="popupCartClose">&times;</span>
+                    <h2 class="popup-title">ตะกร้าของฉัน</h2>
+                    <div class="popup-cart-list" id="cartList">
+                        <!-- รายการสินค้าในตะกร้าจะแสดงที่นี่ -->
+                    </div>
+                    <div class="popup-cart-total-row">
+                        <span>ยอดชำระรวมทั้งหมด </span><span id="cartTotal" style="color:#c44; font-weight:bold;">0
+                            บาท</span>
+                    </div>
+                    <div class="popup-cart-pay-label">ชำระแบบ</div>
+                    <div class="popup-cart-pay-row">
+                        <button class="popup-cart-pay-btn active" type="button" data-method="cash">
+                            <img src="img/ตกแต่ง.png" alt="เงินสด"
+                                style="width:32px; height:32px; display:block; margin:0 auto 4px;">
+                            เงินสด
+                        </button>
+                        <button class="popup-cart-pay-btn" type="button" data-method="promptpay">
+                            <img src="img/ตกแต่ง.png" alt="พร้อมเพย์"
+                                style="width:32px; height:32px; display:block; margin:0 auto 4px;">
+                            พร้อมเพย์
+                        </button>
+                    </div>
+                    <button class="popup-cart-confirm-btn" id="cartConfirmBtn" disabled>ยืนยัน</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popup รายละเอียดสินค้า -->
+        <div class="popup-product" id="popupProduct" style="display:none;">
+            <div class="popup-product-content">
+                <span class="popup-product-close" id="popupProductClose">&times;</span>
+                <h2 class="popup-title">รายละเอียด</h2>
+                <div class="popup-img-box">
+                    <img src="img/สั่งเมนู/เมนู/Americano.png" alt="Americano" class="popup-product-img">
+                </div>
+                <div class="popup-product-name">Americano</div>
+                <div class="popup-product-price-row">
+                    <button class="popup-product-price-btn active" type="button">ร้อน 40 บาท</button>
+                    <button class="popup-product-price-btn" type="button">เย็น 55 บาท</button>
+                </div>
+                <div class="popup-product-detail-label">รายละเอียดเพิ่มเติม <span
+                        style="font-size:12px;color:#aaa;">เช่น ระดับความหวาน, ไม่เอาเจลลี่ เป็นต้น</span></div>
+                <input class="popup-product-detail-input" type="text" placeholder="">
+                <button class="popup-product-add-btn">เพิ่ม</button>
+            </div>
+        </div>
+        <hr>
+        <div class="slider-container">
+
+            <div class="slider" id="cardSlider">
+                <div class="card">
+                    <img src="img/สั่งเมนู/เมนู/Mint Mocha.png" alt="">
+                    <div class="textcard">
+                        <h3>Mint Mocha</h3>
+                        <p>60 บาท</p>
+                        <a href="#">เพิ่ม</a>
+                    </div>
+                </div>
+                <div class="card"><img src="img/สั่งเมนู/เมนู/Orange Americano.png" alt="">
+                    <div class="textcard">
+                        <h3>Orange Americano</h3>
+                        <p>60 บาท</p>
+                        <a href="#">เพิ่ม</a>
+                    </div>
+                </div>
+                <div class="card"><img src="img/สั่งเมนู/เมนู/aren latte coffee.png" alt="">
+                    <div class="textcard">
+                        <h3>aren latte coffee</h3>
+                        <p>60 บาท</p>
+                        <a href="#">เพิ่ม</a>
+                    </div>
+                </div>
+                <div class="card"><img src="img/สั่งเมนู/เมนู/brown sugar coffe.png" alt="">
+                    <div class="textcard">
+                        <h3>brown sugar coffe</h3>
+                        <p>60 บาท</p>
+                        <a href="#">เพิ่ม</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="shop">
+            <h3>เมนูทั้งหมด</h3>
+        </div>
+        <hr>
+        <div class="list-menu">
+            <div class="slider-container">
+
+                <div class="slider" id="cardSlider">
+                    <div class="card"><img src="img/สั่งเมนู/เมนู/Americano.png" alt="">
+                        <div class="textcard">
+                            <h3>Americano</h3>
+                            <p>60 บาท</p>
+                            <a href="#">เพิ่ม</a>
+                        </div>
+                    </div>
+                    <div class="card"><img src="img/สั่งเมนู/เมนู/Macchiato.png" alt="">
+                        <div class="textcard">
+                            <h3>Macchiato</h3>
+                            <p>60 บาท</p>
+                            <a href="#">เพิ่ม</a>
+                        </div>
+                    </div>
+                    <div class="card"><img src="img/สั่งเมนู/เมนู/Latte.png" alt="">
+                        <div class="textcard">
+                            <h3>Latte</h3>
+                            <p>60 บาท</p>
+                            <a href="#">เพิ่ม</a>
+                        </div>
+                    </div>
+                    <div class="card"><img src="img/สั่งเมนู/เมนู/Espresso.png" alt="">
+                        <div class="textcard">
+                            <h3>Espresso</h3>
+                            <p>60 บาท</p>
+                            <a href="#">เพิ่ม</a>
+                        </div>
+                    </div>
+                    <div class="card"><img src="img/สั่งเมนู/เมนู/Cappuccino.png" alt="">
+                        <div class="textcard">
+                            <h3>Cappuccino</h3>
+                            <p>60 บาท</p>
+                            <a href="#">เพิ่ม</a>
+                        </div>
+                    </div>
+                    <div class="card"><img src="img/สั่งเมนู/เมนู/Mocha.png" alt="">
+                        <div class="textcard">
+                            <h3>Mocha</h3>
+                            <p>60 บาท</p>
+                            <a href="#">เพิ่ม</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr style="margin: 3rem 0 10rem;">
+        <!-- End Section Shop -->
+        <footer>
+            <div class="footer-content">
+                <!-- โลโก้ -->
+                <div class="footer-logo">
+                    <img src="img/ตกแต่ง.png" alt="Coffee Beans">
+                </div>
+
+                <!-- ข้อความ -->
+                <p class="policy-link"><a href="#">Personal Data Protection Policy.</a></p>
+
+                <!-- Social -->
+                <div class="social">
+                    <p>Follow us:</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="img/หน้าแรก/logo social/fb.png" alt="LINE"></a>
+                        <a href="#"><img src="img/หน้าแรก/logo social/ig.png" alt="Instagram"></a>
+                        <a href="#"><img src="img/หน้าแรก/logo social/ln.png" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Footer Bar -->
+            <div class="bottom-bar">
+                Copyright©2024 by Cobbow ltd., (FaKae) all right reserved.
+            </div>
+        </footer>
+    </div>
+
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>สถานที่</title>
+</head>
+
+<body>
+    <div class="Main">
+        <!-- Seciton Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-hero"><a href="index.html"><img src="img/logo.png" alt="LOGO"></a></div>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">หน้าแรก</a></li>
+                    <li><a href="Contact.html">สถานที่/ติดต่อ</a></li>
+                    <li><a href="Menu.html">สั่งเครื่องดื่ม</a></li>
+                    <li>
+                        <a class="btnpopup" href="#" style="display:flex;align-items:center;gap:6px;">
+                            <img src="img/หน้าแรก/USER.png" alt="โปรไฟล์"
+                                style="width:26px;height:26px;object-fit:cover;display:inline-block;vertical-align:middle;">
+                            โปรไฟล์
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- End Seciton Header -->
+        <div class="wrapper">
+            <span class="icon-close">
+                <ion-icon name="close-outline"></ion-icon></span>
+
+            <div class="form-box login">
+                <h2>เข้าสู่ระบบ</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn">เข้าสู่ระบบ</button>
+                    <div class="login-register">
+                        <p>หากยังไม่สมัครบัญชีโปรด <a href="#" class="register-link">สมัครสมาชิก</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-box register">
+                <h2>สมัครสมาชิก</h2>
+                <form action="#">
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="text" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-forgot">
+                        <label><input type="checkbox">agree to the terms & condition</label>
+                    </div>
+                    <button type="submit" class="btn">ส่งข้อมูล</button>
+                    <div class="login-register">
+                        <p>โปรดตรวจสอบความเรียบร้อยก่อนกดส่งข้อมูล <a href="#" class="login-link">เข้าสู่ระบบ</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Section Content -->
+        <div class="content">
+            <div class="content-main">
+                <h2>LOCATIONS</h2>
+                <img src="img/สถานที่/ภาพร้าน.jpg" alt="">
+                <div class="boxtext">
+                    <h4>ที่อยู่ร้าน: FaKae Coffee Cafe</h4>
+                    <p> เลขที่ 99/15 ถนนสาทรใต้ แขวงยานนาวา เขตสาทร กรุงเทพมหานคร 10120 (อยู่ติดตึก Empire Tower
+                        ใจกลางย่านออฟฟิศ ใกล้ BTS ช่องนนทรี )</p>
+                </div>
+                <img class="minimap" src="img/สถานที่/google map.jpg" alt="">
+                <div class="section-divider"></div>
+                <h2 id="h2Contact">CONTACT</h2>
+                <div class="boxtext">
+                    <h4>FaKae Coffee Cafe - สาทร </h4>
+                    <p>ที่อยู่: 99/15 ถนนสาทรใต้ แขวงยานนาวา เขตสาทร กรุงเทพมหานคร 10120
+                        โทรศัพท์: 02-345-6789 อีเมล: contact@fakaecafe.com Facebook: facebook.com/fakaecafe Instagram:
+                        @fakaecafe Line Official: @fakaecafe เวลาเปิด-ปิด: จันทร์ - ศุกร์ 07.00 - 19.00 น. | เสาร์ -
+                        อาทิตย์ 08.00 - 18.00 น.</p>
+                </div>
+            </div>
+        </div>
+        <!--End Section Content -->
+        <footer>
+            <div class="footer-content">
+                <!-- โลโก้ -->
+                <div class="footer-logo">
+                    <img src="img/ตกแต่ง.png" alt="Coffee Beans">
+                </div>
+
+                <!-- ข้อความ -->
+                <p class="policy-link"><a href="#">Personal Data Protection Policy.</a></p>
+
+                <!-- Social -->
+                <div class="social">
+                    <p>Follow us:</p>
+                    <div class="social-icons">
+                        <a href="#"><img src="img/หน้าแรก/logo social/fb.png" alt="LINE"></a>
+                        <a href="#"><img src="img/หน้าแรก/logo social/ig.png" alt="Instagram"></a>
+                        <a href="#"><img src="img/หน้าแรก/logo social/ln.png" alt="Facebook"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bar -->
+            <div class="bottom-bar">
+                Copyright©2024 by Cobbow ltd., (FaKae) all right reserved.
+            </div>
+        </footer>
+
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
