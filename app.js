@@ -255,11 +255,22 @@ function openProductPopup({ img, name, hot, cold }) {
     popupProduct.querySelector('.popup-product-name').textContent = name;
     const priceBtns = popupProduct.querySelectorAll('.popup-product-price-btn');
     if (priceBtns.length > 1) {
-        priceBtns[0].textContent = hot;
-        priceBtns[1].textContent = cold;
-        priceBtns[0].classList.add('active');
-        priceBtns[1].classList.remove('active');
-        selectedType = 'hot';
+        priceBtns[0].textContent = hot || 'ร้อน 0 บาท';
+        priceBtns[1].textContent = cold || 'เย็น 0 บาท';
+        // ถ้ามีแต่ราคาเดียว ให้ active เฉพาะปุ่มที่มีราคา
+        if (hot && !cold) {
+            priceBtns[0].classList.add('active');
+            priceBtns[1].classList.remove('active');
+            selectedType = 'hot';
+        } else if (!hot && cold) {
+            priceBtns[0].classList.remove('active');
+            priceBtns[1].classList.add('active');
+            selectedType = 'cold';
+        } else {
+            priceBtns[0].classList.add('active');
+            priceBtns[1].classList.remove('active');
+            selectedType = 'hot';
+        }
     }
     popupProduct.querySelector('.popup-product-detail-input').value = '';
     popupProduct.style.display = 'flex';
@@ -298,6 +309,8 @@ popupProduct.querySelector('.popup-product-add-btn').addEventListener('click', f
     } else {
         price = parseInt(priceBtns[1].textContent.replace(/[^\d]/g, ''));
     }
+    // ถ้าไม่มีราคานั้น (ปุ่มว่าง) ไม่ให้เพิ่ม
+    if (isNaN(price) || price === 0) return;
     cart.push({ img, name, type, detail, price });
     updateCartUI();
     popupProduct.style.display = 'none';
@@ -312,10 +325,27 @@ document.querySelectorAll('.card').forEach(card => {
             // ดึงข้อมูลจาก card
             const img = card.querySelector('img')?.src || '';
             const name = card.querySelector('h3')?.textContent || '';
-            // ตัวอย่างราคาสำหรับแต่ละเมนู (ควรปรับให้ดึงจาก data จริง)
-            let hot = 'ร้อน 40 บาท', cold = 'เย็น 55 บาท';
-            if (name.toLowerCase().includes('mocha')) { hot = 'ร้อน 45 บาท'; cold = 'เย็น 60 บาท'; }
-            if (name.toLowerCase().includes('orange')) { hot = 'ร้อน 50 บาท'; cold = 'เย็น 65 บาท'; }
+            // ดึงราคาจาก <p> ใน .textcard
+            const pricePs = Array.from(card.querySelectorAll('p'));
+            let hot = '', cold = '';
+            if (pricePs.length === 1) {
+                if (pricePs[0].textContent.includes('ร้อน')) {
+                    hot = pricePs[0].textContent.trim();
+                    cold = '';
+                } else if (pricePs[0].textContent.includes('เย็น')) {
+                    hot = '';
+                    cold = pricePs[0].textContent.trim();
+                } else {
+                    hot = pricePs[0].textContent.trim();
+                    cold = '';
+                }
+            } else if (pricePs.length >= 2) {
+                hot = pricePs[0].textContent.trim();
+                cold = pricePs[1].textContent.trim();
+            } else {
+                hot = 'ร้อน 40 บาท';
+                cold = 'เย็น 55 บาท';
+            }
             openProductPopup({ img, name, hot, cold });
         });
     }
